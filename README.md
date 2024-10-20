@@ -1,31 +1,5 @@
 # ai-ml-task
 
-## Instructions:
-
-1. Fork the github repo into your personal Github account and take a clone into your local system.
-    
-    Guide to Forking Github Repo: https://docs.github.com/en/github-ae@latest/get-started/quickstart/fork-a-repo
-    
-    Guide for cloning Github Repo: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
-    
-2. Instantiate Virtual Studio code or any Development environment of your choice to complete the assessment in your local working directory.
-3. Save the files and push it into forked Github github repo.
-    
-    Guide to pushing code into Github Repo: https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github
-    
-4. Record a screencast video recording demonstrating the solution in your system and upload the video into the forked github repo.
-    
-    Guide to record screen in
-    
-    a) MAC: https://support.apple.com/en-in/102618
-    
-    b) Windows: https://www.microsoft.com/en-us/windows/learning-center/how-to-record-screen-windows-11
-    
-    c) Ubuntu: https://askubuntu.com/questions/4428/how-can-i-record-my-screen
-    
-5. Share the repository link into the Google Form: [https://forms.gle/2HbLP8GNiYArZFsj8](https://forms.gle/ufqFg2Kgk5C54Amn7)
-
-
 ## Problem Statement:
 You are given an image which contains multiple headings and subheadings, perform suitable preprocessing techniques and computer vision approaches to extract the text in an organized format, write the python code to take the image input and create the organized dictionary as output. 
 
@@ -41,20 +15,45 @@ You are given an image which contains multiple headings and subheadings, perform
   "White": "Symbolizes peace and truth"
 }
 ```
-### The Task
-- Take the Image `sample.jpeg` present in this repository
-- create a dictionary containing headers as keys and content as value
-- submit the output screenshot
-- write the readme on the approach that you followed
 
-Our aim is to assess applicants' aptitude, innovative thinking, and their ability to comeup with new ways of solving problems, its an open ended assessment and candidate is free to innovate new ways of preprocessing or organizing the texts. 
 
-### **Deliverables**:
-- python script to take in image and output dictionary
-- readme explaining steps to run the code
-- readme explaination on the approaches followed
-- demo video showing the output 
-- 
+### Requirements
+The following libraries and tools are required for running the project:
 
-**Push the source code along with a demo video of your solution into the forked github repo. Share the repo link in the google form: [https://forms.gle/2HbLP8GNiYArZFsj8](https://forms.gle/ufqFg2Kgk5C54Amn7)**
+Python Libraries
+- pytesseract: For Optical Character Recognition (OCR).
+- opencv-python: For preprocessing images.
+- Pillow: For handling and manipulating images.
+## External Tool
+- Tesseract OCR: Make sure to install the Tesseract OCR engine separately
+- Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki and after downloading it install into a folder. Edit the environment variables and add the exe file into the PATH of the System Variables.
+- Linux: Install via sudo apt-get install tesseract-ocr
+- MacOS: Install via Homebrew: brew install tesseract
+### Virtual Environment 
+It is a good pratice to create a virtual environment when doing a new project so that it  helps to  decouple and isolate Python installs and associated pip package. It also helps for people to replicate your project.
+- In the terminal of your IDE go to command prompt and in that type python -m venv <virtual-environment-name>
+- After creating the virtual environment you should activate it. To do that use venv/Scripts/activate.bat
+- To see if you have activated the virtual environment you can see near the command prompt that the environment name is present in the left corner.
+### Python Requirements File
+- pytesseract
+- opencv-python
+- Pillow
+### Steps to Run the Code
+1)Install Tesseract OCR:
+- Install Tesseract OCR on your system and set the path to tesseract.exe in your Python script.
+2) Clone or Download the Repository
+3) Clone this repository or download the necessary files, including the image sample.jpeg.
+4) Set up the Path to Tesseract
+- In the Python script (app.py), update the Tesseract path to point to the executable:
+pytesseract.pytesseract.tesseract_cmd = r'path_to_your_tesseract_executable'
+5) Install Python Libraries
+- pip install -r requirements.txt
+6) The output will be a dictionary where the extracted headings are keys and subheadings or values are the corresponding dictionary values.
+### Explanation
+1)Image Loading - We load the image using the Pillow library. In this case, the image (sample.jpeg) is loaded for text extraction.
+2)Preprocessing the Image - Image preprocessing is crucial for improving OCR accuracy. Using OpenCV, the image is converted to grayscale to reduce noise and simplify the text extraction process. Further, thresholding techniques are applied to binarize the image, making the text stand out more clearly.
+3) Extracting Text Using OCR (Tesseract)
+Using pytesseract, the processed image is passed through the OCR engine, which extracts the text. This raw text contains all the headings, subheadings, and contents from the image in an unorganized format.
+4) Organizing Extracted Text - After extracting the text, the program uses regular expressions (re) to identify headings and their corresponding values. The headings are treated as dictionary keys, and their values (or subheadings) are the dictionary values. This organization depends on the structure of the extracted text and specific rules for recognizing headings.
+5) Returning the Organized Dictionary - The final output is a Python dictionary that organizes the headings and subheadings in a clean format.
 
