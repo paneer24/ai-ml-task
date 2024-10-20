@@ -31,7 +31,7 @@ Python Libraries
 - MacOS: Install via Homebrew: brew install tesseract
 ### Virtual Environment 
 It is a good pratice to create a virtual environment when doing a new project so that it  helps to  decouple and isolate Python installs and associated pip package. It also helps for people to replicate your project.
-- In the terminal of your IDE go to command prompt and in that type python -m venv <virtual-environment-name>
+- In the terminal of your IDE go to command prompt and in that type python -m venv virtual-environment-name
 - After creating the virtual environment you should activate it. To do that use venv/Scripts/activate.bat
 - To see if you have activated the virtual environment you can see near the command prompt that the environment name is present in the left corner.
 ### Python Requirements File
@@ -50,8 +50,8 @@ pytesseract.pytesseract.tesseract_cmd = r'path_to_your_tesseract_executable'
 - pip install -r requirements.txt
 6) The output will be a dictionary where the extracted headings are keys and subheadings or values are the corresponding dictionary values.
 ### Explanation
-1)Image Loading - We load the image using the Pillow library. In this case, the image (sample.jpeg) is loaded for text extraction.
-2)Preprocessing the Image - Image preprocessing is crucial for improving OCR accuracy. Using OpenCV, the image is converted to grayscale to reduce noise and simplify the text extraction process. Further, thresholding techniques are applied to binarize the image, making the text stand out more clearly.
+1) Image Loading - We load the image using the Pillow library. In this case, the image (sample.jpeg) is loaded for text extraction.
+2) Preprocessing the Image - Image preprocessing is crucial for improving OCR accuracy. Using OpenCV, the image is converted to grayscale to reduce noise and simplify the text extraction process. Further, thresholding techniques are applied to binarize the image, making the text stand out more clearly.
 3) Extracting Text Using OCR (Tesseract)
 Using pytesseract, the processed image is passed through the OCR engine, which extracts the text. This raw text contains all the headings, subheadings, and contents from the image in an unorganized format.
 4) Organizing Extracted Text - After extracting the text, the program uses regular expressions (re) to identify headings and their corresponding values. The headings are treated as dictionary keys, and their values (or subheadings) are the dictionary values. This organization depends on the structure of the extracted text and specific rules for recognizing headings.
